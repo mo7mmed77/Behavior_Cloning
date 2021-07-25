@@ -1,17 +1,6 @@
 # **Behavioral Cloning Project** 
 
 ---
-
-**Behavioral Cloning Project For Self Driving Car**
-
-The goals / steps of this project are the following:
-* Use the simulator to collect data of good driving behavior
-* Build, a convolution neural network in Keras that predicts steering angles from images
-* Train and validate the model with a training and validation set
-* Test that the model successfully drives around track one without leaving the road
-* Summarize the results with a written report
-
-
 [//]: # (Image References)
 
 [image1]: ./Plots/overall.png "Overall"
@@ -22,8 +11,22 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder_small.png "Normal Image"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
-## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+
+**Behavioral Cloning Project For Self Driving Car**
+
+The goals / steps of this project are the following:
+* Use the simulator to collect data of good driving behavior
+* Build, a convolution neural network in Keras that predicts steering angles from images
+* Train and validate the model with a training and validation set
+* Test that the model successfully drives around track one without leaving the road
+* Summarize the results with a written report
+
+![alt text][image1]
+
+The above image shows a general block diagram (NVIDIA project) of the self driving car steering method through behavior cloning. As it can be seen the first step is to collect data through a user of the simulator. This data includes three dashcamera images pointing (left, centre and right), moreover the control inputs to the car are also included, such as steering angle and throttle. For the case of driving the car autonomously through the tracks, the throttle is ignored. 
+
+Convolutional Neural Network (CNN) is used in saveral layers of the training model.  
+
 
 ---
 ### Files Submitted & Code Quality
@@ -94,7 +97,6 @@ The final model architecture (model.py lines 18-24) consisted of a convolution n
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
-![alt text][image1]
 
 #### 3. Creation of the Training Set & Training Process
 
