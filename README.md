@@ -59,10 +59,52 @@ The above shows the NVIDIA AI model that was used for the self driving car proje
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of three convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of five convolution neural network (similar to Nvidia model) with 3x3 filter sizes and  strides 2X2. 
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer. Moreover, Max pooling is used to reduce the size of the image features, hence reduce the number of training paramters in the model. Two dropout layers are used to reduce and prevent overfitting of the model. A densely connected layer is used to provide learning features from all the combinations of the features of the previous layer. Cropping of the images is used to ignore the irrelevent off road features, such as the sky, mountains, trees... etc. 
 
+A summary of the used model are shown below. 
+
+```
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lambda (Lambda)              (None, 160, 320, 3)       0         
+_________________________________________________________________
+cropping2d (Cropping2D)      (None, 75, 320, 3)        0         
+_________________________________________________________________
+conv2d (Conv2D)              (None, 36, 158, 24)       1824      
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 16, 77, 36)        21636     
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 6, 37, 48)         43248     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 4, 35, 64)         27712     
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 2, 33, 64)         36928     
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 1, 16, 64)         0         
+_________________________________________________________________
+flatten (Flatten)            (None, 1024)              0         
+_________________________________________________________________
+dense (Dense)                (None, 100)               102500    
+_________________________________________________________________
+dropout (Dropout)            (None, 100)               0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 50)                5050      
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                510       
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 10)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 239,419
+Trainable params: 239,419
+Non-trainable params: 0
+_____________________________________________
+```
 #### 2. Attempts to reduce overfitting in the model
 
 The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
