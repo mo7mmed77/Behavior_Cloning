@@ -21,11 +21,12 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
+
 ![alt text][image1]
 
 The above image shows a general block diagram (NVIDIA project) of the self driving car steering method through behavior cloning. As it can be seen the first step is to collect data through a user of the simulator. This data includes three dashcamera images pointing (left, centre and right), moreover the control inputs to the car are also included, such as steering angle and throttle. For the case of driving the car autonomously through the tracks, the throttle is ignored. 
 
-Convolutional Neural Network (CNN) is used in saveral layers of the training model.  
+Convolutional Neural Network (CNN) is used in saveral layers of the training model. The process of developing the model includes making use of keras API, in which it takes the three images as well as the control steering angle as an input. Saveral recorded scenarios were included such as driving in the opposite direction of the track to create a more general solution. The model is stored in 'model.h5'
 
 
 ---
