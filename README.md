@@ -51,10 +51,15 @@ python drive.py model.h5
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
 ### Model Architecture and Training Strategy
+#### NVIDIA Model
+
+![alt text][image2]
+
+The above shows the NVIDIA AI model that was used for the self driving car project above. as it can be seen the model uses five CNN layers on top of each other. This is done to observe and gather more details from the training images. Moreover, each layer represent a level of detail, as the layers goes smaller , finer details are detected and recorded, and the weights are adjusted accordingly. Normalization laywer is following the first input layer, this is done to make it easier for the model to process the images. 
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of three convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
 
 The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
 
