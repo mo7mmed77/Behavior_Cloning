@@ -1,12 +1,8 @@
-# **Behavioral Cloning** 
-
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+# **Behavioral Cloning Project** 
 
 ---
 
-**Behavioral Cloning Project**
+**Behavioral Cloning Project For Self Driving Car**
 
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
@@ -18,8 +14,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
+[image1]: ./Plots/overall.png "Overall"
+[image2]: ./Plots/cnn.png "NVIDIA CNN Model"
 [image3]: ./examples/placeholder_small.png "Recovery Image"
 [image4]: ./examples/placeholder_small.png "Recovery Image"
 [image5]: ./examples/placeholder_small.png "Recovery Image"
