@@ -7,7 +7,7 @@
 [image2]: ./Plots/cnn.png "NVIDIA CNN Model"
 [image3]: ./Plots/Image_Processed.png "Cropped Image"
 [image4]: ./Plots/sim2.png "Lane"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
+[image5]: ./Plots/Model_MSE_Loss.png "Recovery Image"
 [image6]: ./examples/placeholder_small.png "Normal Image"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
@@ -72,6 +72,8 @@ Layer (type)                 Output Shape              Param #
 =================================================================
 lambda (Lambda)              (None, 160, 320, 3)       0         
 _________________________________________________________________
+dropout (Dropout)            (None, 160, 320, 3)       0         
+_________________________________________________________________
 cropping2d (Cropping2D)      (None, 75, 320, 3)        0         
 _________________________________________________________________
 conv2d (Conv2D)              (None, 36, 158, 24)       1824      
@@ -90,8 +92,6 @@ flatten (Flatten)            (None, 1024)              0
 _________________________________________________________________
 dense (Dense)                (None, 100)               102500    
 _________________________________________________________________
-dropout (Dropout)            (None, 100)               0         
-_________________________________________________________________
 dense_1 (Dense)              (None, 50)                5050      
 _________________________________________________________________
 dense_2 (Dense)              (None, 10)                510       
@@ -103,7 +103,7 @@ dense_3 (Dense)              (None, 1)                 11
 Total params: 239,419
 Trainable params: 239,419
 Non-trainable params: 0
-_____________________________________________
+_________________________________________________________________
 ```
 
 #### Data Used in Training 
@@ -146,7 +146,7 @@ Moreover, as it can be seen earlier a data of driving the track in the opposite 
 
 The model used an adam optimizer, so the learning rate was 0.001. I had some issues providing a good model, then i tested with values 0.0001 but the model was giving almost the same results then i went back and stuck with this number. 
 
-The Validation set was first tested with 20%, then I had to increase to 25% and the model was performing much better. Especially in the left turn before the sandy road. Other than that the model was chosen similar to the Nvidia model. 
+The Validation set was  tested with 20% and 25%, the 20% was providing lower values of the mean squared error (MSE). Hence 20% was chosen. Two dropout layers was chosen and tuned to be 0.8 and 0.5 for the input and output layer, respectively.  Other than that the model was chosen similar to the Nvidia model.
 
 #### 4. Appropriate training data
 
@@ -170,6 +170,12 @@ The final step was to run the simulator to see how well the car was driving arou
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-I finally randomly shuffled the data set 25% of the data into a validation set. 
+I finally randomly shuffled the data set 20% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 7 as evidenced by experimentation. This number was chosen based on the output MSE reaching a steady state value.  I used an adam optimizer so that manually training the learning rate wasn't necessary.
+
+
+#### Model MSE output
+![alt text][image3]
+
+as it can be seen the MSE for test set is very low and decreasing with each epoch, which means that the model should be accurate. The validation set are not decreasing , this could be due to the high number of data used during training (117,102 samples), However, this value is small enough that the model should generalize well. 
