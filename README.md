@@ -179,3 +179,9 @@ I used this training data for training the model. The validation set helped dete
 ![alt text][image3]
 
 as it can be seen the MSE for test set is very low and decreasing with each epoch, which means that the model should be accurate. The validation set are not decreasing , this could be due to the high number of data used during training (117,102 samples), However, this value is small enough that the model should generalize well. 
+
+
+#### Summary of Issues 
+* The GPU sometimes are not identified when starting the model for training. This was sometimes solved by restarting the environment. 
+* The memory is sometimes too low for the training of the model. This was solved by closing any other applications that takes too much memory. 
+* The car will drive into the offroad exit. This was solved by adding more data during that turn. 
