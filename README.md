@@ -180,7 +180,8 @@ I used this training data for training the model. The validation set helped dete
 
 as it can be seen the MSE for test set is very low and decreasing with each epoch, which means that the model should be accurate. The validation set are not decreasing , this could be due to the high number of data used during training (117,102 samples), However, this value is small enough that the model should generalize well. 
 
-
+#### Video of the Run 
+(Video.mp4) is recorded during autonomous mode. It summarizes the performance of the model of more than one lap of the track. Another video (run2.mp4) is recorded as well to guarentee that the model runs well. 
 #### Summary of Issues 
 * The GPU sometimes are not identified when starting the model for training. This was sometimes solved by restarting the environment. 
 * The memory is sometimes too low for the training of the model. This was solved by closing any other applications that takes too much memory. 
