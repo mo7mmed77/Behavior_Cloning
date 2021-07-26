@@ -113,7 +113,7 @@ The data used in training are summarized in the following table
 | data      | This is the data provided by Udacity at their own github repository       |  24,108  |
 | mydata   | This my training data of three laps        | 23,556  |
 | mydata_oppos   |  two laps driving in opposite direction       |  8,142  |
-| mydata_avoid_dirt   |  two laps driving in opposite direction       | 2,745   |
+| mydata_avoid_dirt   |  six times driving and avoiding the offroad turn       | 2,745   |
 
 The total number of samples is 58,551. The sample includes images of the cameras on the car pointing centre, left and right.  This number is doubled by flipping all images and steering input, so the final training data is 117,102. 
 
