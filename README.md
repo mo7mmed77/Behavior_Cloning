@@ -151,7 +151,7 @@ The Validation set was  tested with 20% and 25%, the 20% was providing lower val
 #### 4. Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. I used the given data and I added three laps (mydata) of driving at the centre lane and during each lap I would let the car get closer to the left or right lane then correct it. This is to ensure that the car will correct itself in Autonomous mode, because it incounters similar scenario. Moreover, the car had issues correcting the lane during this left turn. 
-![alt text][image3]
+![alt text][image4]
 
 In which there is an offroad exit and the right lane line is missing. I decreased this issue by providing more data during this left turn only. I did this exact turn 6  times and stored it under (mydata_avoid_dirt). The model then behaved much better. Furthermore, as mentioned earlier another two laps were gathered from driving in the opposition direction. 
 
@@ -185,3 +185,4 @@ as it can be seen the MSE for test set is very low and decreasing with each epoc
 * The GPU sometimes are not identified when starting the model for training. This was sometimes solved by restarting the environment. 
 * The memory is sometimes too low for the training of the model. This was solved by closing any other applications that takes too much memory. 
 * The car will drive into the offroad exit. This was solved by adding more data during that turn. 
+* Sometimes during autonomous mode, the input steering to the car would freeze at a certain angle, which means that even the (drive.py) output data to the simulator are freezed. This is simply solved by restarting the run of (drive.py) and the simulator. 
