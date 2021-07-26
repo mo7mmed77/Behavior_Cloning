@@ -9,13 +9,7 @@ def process_img(img):
     # This function is intended to process the images and eliminate any irrelevent features
     # such as colour and the offroad features
     
-    #img = img[50:140,:,:]
-    # apply subtle blur
-    #img = cv2.GaussianBlur(img, (3,3), 0)
-    # scale to 66x200x3 (same as nVidia)
-    #img = cv2.resize(img,(320, 160), interpolation = cv2.INTER_AREA)
-    
-    # convert to YUV color space 
+    # convert to YUV color space (Similar to Invidia Model)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
     return img
 
@@ -65,10 +59,10 @@ measurements=[]
 print('\n Loading images...')
 
 # Load and store the given data
-""""imgg,meas=load_data('data')
+imgg,meas=load_data('data')
 for image,measurement in zip(imgg,meas):
     images.append(image)
-    measurements.append(measurement)"""
+    measurements.append(measurement)
 
 # Load and append the First training (3 Labs)
 imgg,meas=load_data('mydata')
@@ -83,11 +77,11 @@ for image,measurement in zip(imgg,meas):
     images.append(image)
     measurements.append(measurement)
 
-# Load and append the Third Training data (Avoiding dirty Roads, 6 times), (Not Needed due to too many images used)
-""""imgg,meas=load_data('mydata_avoid_dirt')
+# Load and append the Third Training data (Avoiding dirty Roads, 6 times), (used in second run only )
+imgg,meas=load_data('mydata_avoid_dirt')
 for image,measurement in zip(imgg,meas):
     images.append(image)
-    measurements.append(measurement)"""
+    measurements.append(measurement)
 
 
 for (image, measurement) in zip(images,measurements):
@@ -138,8 +132,6 @@ def nvidia_model():
 
     model.add(Dense(50, activation = 'elu'))
     
-    #model.add(Dropout(0.5))
-
     model.add(Dense(10, activation = 'elu'))
     
     model.add(Dropout(0.5))
@@ -152,7 +144,7 @@ def nvidia_model():
 model = nvidia_model()
 model.summary()
 
-history_object=model.fit(X_train,y_train,validation_split=0.25, shuffle=True,epochs=5,verbose = 1)
+history_object=model.fit(X_train,y_train,validation_split=0.25, shuffle=True,epochs=7,verbose = 1)
 ### print the keys contained in the history object
 print(history_object.history.keys())
 
