@@ -10,7 +10,7 @@ def process_img(img):
     # such as colour and the offroad features
     
     # convert to YUV color space (Similar to Invidia Model)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
+    #img = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
     return img
 
 ## Function that loads and returns images and measurements 
@@ -25,7 +25,7 @@ def load_data(folder_name):
             steering_center = float(row[3])
 
             # create adjusted steering measurements for the side camera images
-            correction = 0.2 # this is a parameter to tune
+            correction = 0.1 # this is a parameter to tune
             steering_left = steering_center + correction
             steering_right = steering_center - correction
 
@@ -113,6 +113,8 @@ def nvidia_model():
     
     model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
 
+    model.add(Dropout(0.8))
+    
     # eliminate offroad features
     model.add(Cropping2D(cropping=((60,25),(0,0)))) 
     
@@ -128,10 +130,10 @@ def nvidia_model():
 
     model.add(Dense(100, activation = 'elu'))
     
-    model.add(Dropout(0.25))
 
     model.add(Dense(50, activation = 'elu'))
     
+
     model.add(Dense(10, activation = 'elu'))
     
     model.add(Dropout(0.5))
@@ -144,7 +146,7 @@ def nvidia_model():
 model = nvidia_model()
 model.summary()
 
-history_object=model.fit(X_train,y_train,validation_split=0.25, shuffle=True,epochs=7,verbose = 1)
+history_object=model.fit(X_train,y_train,validation_split=0.2, shuffle=True,epochs=7,verbose = 1)
 ### print the keys contained in the history object
 print(history_object.history.keys())
 
