@@ -176,7 +176,7 @@ I used this training data for training the model. The validation set helped dete
 
 
 #### Model MSE output
-![alt text][image3]
+![alt text][image5]
 
 as it can be seen the MSE for test set is very low and decreasing with each epoch, which means that the model should be accurate. The validation set are not decreasing , this could be due to the high number of data used during training (117,102 samples), However, this value is small enough that the model should generalize well. 
 
